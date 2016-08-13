@@ -1,7 +1,7 @@
 <?php
 $user = $_POST['email'];
 $pass = $_POST['pass'];
-$result = db_get_where('admin','email',$user);
+$result = db_get_where('fp_users','email',$user);
     for ($i=0;$i<count($result);$i++){
         echo pass_decrypt($result[$i]['password'],KEY_ENCRYPT);
         if ($pass == pass_decrypt($result[$i]['password'],KEY_ENCRYPT))
