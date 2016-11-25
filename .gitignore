@@ -1,4 +1,2 @@
 config/credentials.php
-config/config.php
-cms/fp-admin/config/config.php
 cms/fp-admin/config/credentials.php
