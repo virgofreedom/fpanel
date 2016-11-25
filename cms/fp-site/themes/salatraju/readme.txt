@@ -1,0 +1,1 @@
+This theme designed by Salatraju member. this is the original theme when Fpanel create this application.

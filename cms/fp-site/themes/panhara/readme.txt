@@ -1,0 +1,1 @@
+This is theme designed by Panhara a designer at Cambodia.
