@@ -66,7 +66,9 @@ if (stripos(THIS_PAGE,".php") != -1){
     define('VIEW_PAGE',basename($_SERVER['PHP_SELF']));    
 }
 //Define front end theme///
+
 $res = db_get_limit('themes_use',0,1);
 define('THEME_ID',$res[0]['Id']);
 define('THEME_TITLE',$res[0]['Title']);
 define('THEME_CUSTOMIZE',$res[0]['Active']);
+
