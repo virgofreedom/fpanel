@@ -1,2 +1,4 @@
+config/config.php
 config/credentials.php
 cms/fp-admin/config/credentials.php
+cms/fp-admin/config/config.php
