@@ -26,7 +26,7 @@ shell_exec("sudo mkdir config");
         ///Change permission
         shell_exec("sudo chmod 777 config");
         //create file
-        $credenttials = fopen("config/credentials.php","w") or die("Unable to open file");
+        $credenttials = fopen("config/credentials.php","w") or die("Unable to open credentials file");
         fwrite ($credenttials,$string);
         fclose($credenttials);
         shell_exec("sudo chmod 777 config/credentials.php");
@@ -40,11 +40,11 @@ shell_exec("sudo mkdir config");
         define('PHYSICAL_PATH','".$physical."'); \n
         define('KEY_ENCRYPT','".$secret."'); \n
         ";
-        $config_default = fopen ("library/config_default.conf","r") or die("Unable to open file");
+        $config_default = fopen ("library/config_default.conf","r") or die("Unable to open config_default file");
         $string .= fread ($config_default,filesize("library/config_default.conf"));
         ///Change permission
         shell_exec("sudo chmod 777 config");
-        $config = fopen("config/config.php","w") or die("Unable to open file");
+        $config = fopen("config/config.php","w") or die("Unable to open config file");
         fwrite ($config,$string);
         fclose($config);
         shell_exec("sudo chmod 777 config/config.php");
