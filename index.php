@@ -44,7 +44,7 @@ if(file_exists("config/credentials.php")){
              </div>
              <div class="small-12 medium-6 large-4 columns">
                 <label for="">Password*:</label>
-                <input type="password" placeholder="Password" name="pass" required>
+                <input type="password" placeholder="Password" name="password" required>
              </div>
              
     </div>
@@ -53,8 +53,8 @@ if(file_exists("config/credentials.php")){
     <div class="small-12 columns">
          <h4>Config Information</h4>
              <div class="small-12 medium-6 large-4 columns">
-                <label for="">HTTP HOST*:</label>
-                <input type="text" placeholder="HTTP HOST" name="http_host" value="<?=$_SERVER['HTTP_HOST']?>/fpanel" required>
+                <label for="">VIRTUAL PATH*:</label>
+                <input type="text" placeholder="HTTP HOST" name="http_host" value="<?=$_SERVER['HTTP_HOST']?>/fpanel/" required>
              </div>
              <div class="small-12 medium-6 large-4 columns">
                 <label for="">PHYSICAL PATH*:</label>
@@ -66,7 +66,9 @@ if(file_exists("config/credentials.php")){
                 <label for="">Secret Key*:</label>
                 <input type="text" placeholder="Secret" name="secret_key" required>
              </div>
-             
+             <div class="small-12 columns">
+                 <label for=""><i>Note*: all the path must ending by "/". In case you forgot "/" you can add it later in the control panel.</i></label>
+             </div>
              <div class="small-12 columns">
                 <input type="submit" name="submit" class="button flat-green right" value="Next">    
              </div>    

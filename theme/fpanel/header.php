@@ -16,7 +16,7 @@ if(SESSION == true){
     <link rel="stylesheet" href="<?=VIRTUAL_PATH?>css/table.css">
     <link rel="stylesheet" href="<?=VIRTUAL_PATH?>theme/<?=THEME?>/style/main.css">
     
-    <script src="<?=VIRTUAL_PATH?>/js/virgo.js"></script>
+    <script src="<?=VIRTUAL_PATH?>js/virgo.js"></script>
     <script src="<?=VIRTUAL_PATH?>theme/<?=THEME?>/js/jquery.js" async></script>
     <script src="<?=VIRTUAL_PATH?>theme/<?=THEME?>/js/clock.js" async></script>
     <script src="<?=VIRTUAL_PATH?>theme/<?=THEME?>/js/main.js" async></script>

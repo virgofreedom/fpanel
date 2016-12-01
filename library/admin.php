@@ -29,6 +29,6 @@ if (isset($_SESSION['pass']))
     }    
 }else{//if not sent to login page
    unset($_SESSION['error']);
-   header("Location: ".VIRTUAL_PATH."index.php/login.php");
+   header("Location: index.php/login.php");
    die;
 }

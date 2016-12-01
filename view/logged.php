@@ -1,12 +1,15 @@
 <?php
 $user = $_POST['email'];
 $pass = $_POST['pass'];
-$result = db_get_where('fp_users','email',$user);
+$data = array(
+    'Email'=>$user
+);
+$result = db_get_where('Users',$data);
     for ($i=0;$i<count($result);$i++){
-        echo pass_decrypt($result[$i]['password'],KEY_ENCRYPT);
-        if ($pass == pass_decrypt($result[$i]['password'],KEY_ENCRYPT))
+        echo pass_decrypt($result[$i]['Password'],KEY_ENCRYPT);
+        if ($pass == pass_decrypt($result[$i]['Password'],KEY_ENCRYPT))
         {
-         $_SESSION['pass'] = $result[$i]['password'];
+         $_SESSION['pass'] = $result[$i]['Password'];
          unset($_SESSION['error']);    
          header("Location: ".VIRTUAL_PATH."index.php/index.php");
          die;
