@@ -14,22 +14,24 @@
                     <tbody>
                         <?php
                         
-                        $result = db_get('customers');
+                        $result = db_get('Users');
                         
                         for ($i=0;$i<count($result);$i++){
-                            $id =$i+1;
-                         echo '
-                         <tr>
-                         <td>'.$id.'</td><td>'.$result[$i]['CompanyName'].'</td><td>'.$result[$i]['CustomerName'].'</td>
-                         <td>'.$result[$i]['Phone'].'</td><td>'.$result[$i]['Email'].'</td><td>'.$result[$i]['DateModify'].'</td>
-                         <td>
-                         <a href="customer_edit.php?id='.$result[$i]['CustomerID'].'" class="flat-green button tiny">Edit</a>
-                         <a href="#" onclick="msgbox('.
-                         "'Are you sure to delete this customer?','customer_delete.php?id=".$result[$i]['CustomerID']."','_self','yesno'"
-                         .')" class="flat-red button tiny">Delete</a>
-                         </td>
-                         </tr>
-                         ';   
+                            if ($result[$i]['ROLE']!='hoster'){
+                            
+                            echo '
+                                <tr>
+                                <td>'.$result[$i]['Id'].'</td><td>'.$result[$i]['CompanyName'].'</td><td>'.$result[$i]['LastName'].' '.$result[$i]['FirstName'].'</td>
+                                <td>'.$result[$i]['Phone'].'</td><td>'.$result[$i]['Email'].'</td><td>'.$result[$i]['DateCreate'].'</td>
+                                <td>
+                                <a href="edit?id='.$result[$i]['Id'].'" class="flat-green button tiny">Edit</a>
+                                <a href="#" onclick="msgbox('.
+                                "'Are you sure to delete this customer?','delete?id=".$result[$i]['Id']."','_self','yesno'"
+                                .')" class="flat-red button tiny">Delete</a>
+                                </td>
+                                </tr>
+                                '; 
+                            }
                         }
                         ?>
                         

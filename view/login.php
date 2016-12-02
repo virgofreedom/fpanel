@@ -4,7 +4,7 @@
 				FPanel Login
 			</div>
 			<div class="small-12 columns login-form">
-				<form action="logged.php" method="POST">
+				<form action="logged" method="POST">
 					<input type="email" placeholder="Email" name="email">
 					<input type="password" placeholder="Password" name="pass">
 					<input type="submit" name="submit" class="flat-purple right">

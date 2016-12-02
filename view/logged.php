@@ -10,10 +10,16 @@ $result = db_get_where('Users',$data);
         if ($pass == pass_decrypt($result[$i]['Password'],KEY_ENCRYPT))
         {
          $_SESSION['pass'] = $result[$i]['Password'];
+         $_SESSION['infos'] = array(
+             'LastName' => $result[$i]['LastName'],
+             'FirstName' => $result[$i]['FirstName'],
+             'Email'=> $result[$i]['Email'],
+             'Phone' => $result[$i]['Phone']
+         );
          unset($_SESSION['error']);    
-         header("Location: ".VIRTUAL_PATH."index.php/index.php");
+         header("Location: ".VIRTUAL_PATH."home");
          die;
         }
     }
     $_SESSION['error'] = 'Email and Password entered does not match';
-    header("Location: ".VIRTUAL_PATH."index.php/login.php");
+    header("Location: login");

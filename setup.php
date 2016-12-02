@@ -72,7 +72,9 @@ if(isset($_POST['submit'])){
     Id int AUTO_INCREMENT PRIMARY KEY,
     LastName varchar(255) DEFAULT NULL,
     FirstName varchar(255) DEFAULT NULL,
+    CompanyName text DEFAULT NULL,
     Email text DEFAULT NULL,
+    Phone varchar(255) DEFAULT NULL,
     Password text DEFAULT NULL,
     ROLE text DEFAULT NULL,
     DateCreate datetime DEFAULT NULL

@@ -9,11 +9,14 @@ if(isset($_GET['id'])){
     }
 if (!isset($_POST['submit']))
 {//show form
-    
-    $result = db_get_where('customers','CustomerID',$id);
+    $data = array(
+        'Id'=>$id
+    );
+    $result = db_get_where('Users',$data);
          for ($i=0;$i<count($result);$i++){
              $com_name = $result[$i]['CompanyName'];
-             $cl_name =  $result[$i]['CustomerName'];
+             $cl_last_name =  $result[$i]['LastName'];
+             $cl_first_name =  $result[$i]['FirstName'];
              $phone =  $result[$i]['Phone'];
              $email =  $result[$i]['Email'];
          }
@@ -22,17 +25,22 @@ if (!isset($_POST['submit']))
             
             <span class="section-title">New Customers</span>
             </div>    
-            <form action="<?=THIS_PAGE?>" method="POST">
+            <form action="edit" method="POST">
                 <input type="hidden" name="id" value="<?=$id?>">
                <div class="row">
-                    <div class="small-12 medium-6 large-6 columns">
+                    <div class="small-12 medium-12 large-12 columns">
                         <label for="company_name">Company Name
                         <input type="text" id="company_name" name="com_name" value="<?=$com_name?>" required>
                         </label>        
                     </div>
                     <div class="small-12 medium-6 large-6 columns">
-                        <label for="client_name">Client Name
-                        <input type="text" id="client_name" name="cl_name" class="full-width" value="<?=$cl_name?>" required>
+                        <label for="client_name">Client Last Name
+                            <input type="text" id="client_name" name="cl_last_name" class="full-width" value="<?=$cl_last_name?>" required>
+                        </label>
+                    </div>
+                    <div class="small-12 medium-6 large-6 columns">
+                        <label for="client_name">Client First Name
+                            <input type="text" id="client_name" name="cl_first_name" class="full-width" value="<?=$cl_first_name?>" required>
                         </label>
                     </div>    
                     <div class="small-12 medium-6 large-6 columns">
@@ -42,11 +50,10 @@ if (!isset($_POST['submit']))
                     </div>    
                     <div class="small-12 medium-6 large-6 columns">
                         <label for="email">Email
-                        <input type="email" id="email" name="email" class="full-width" value="<?=$email?>">
+                            <input type="email" id="email" name="email" class="full-width" value="<?=$email?>" required>
                         </label>
                     </div>    
                     <div class="small-12 medium-6 large-6 columns left">
-                        
                         <input type="submit" name="submit" class="flat-green" value="Submit">
                         </label>
                     </div>    
@@ -56,13 +63,19 @@ if (!isset($_POST['submit']))
         
 <?php
 }else{//submit form
-  $id = $_POST['id'];
-  $data = array('CompanyName' => $_POST['com_name'],
-                'CustomerName' =>$_POST['cl_name'],
-                'Phone' =>$_POST['phone'],
-                'Email' =>$_POST['email'],
-                'DateModify'=>date("Y-m-d") );
-      db_update('customers',$data,'CustomerID',$id);
+  $cond = array(
+      'Id'=>$_POST['id']
+  );
+
+  $data = array(
+      'LastName' => $_POST['cl_last_name'],
+      'FirstName' => $_POST['cl_first_name'],
+      'CompanyName' => $_POST['com_name'],
+      'Phone' =>$_POST['phone'],
+      'Email' =>$_POST['email'],
+      'DateCreate'=>date("Y-m-d H:i:s") 
+      );
+      db_update('Users',$data,$cond);
       $result = $_POST['com_name']." has beed saved!";
   
   echo '
@@ -71,7 +84,7 @@ if (!isset($_POST['submit']))
             
             <span class="section-title">'.$result.'</span>
    </div>
-   <a href="customer_list.php" class="flat-green button">Back to list</a><a href="index.php" class="flat-green button">Home</a>
+   <a href="list" class="flat-green button">Back to list</a><a href="'.VIRTUAL_PATH.'home" class="flat-green button">Home</a>
    </div>
   ';
 }

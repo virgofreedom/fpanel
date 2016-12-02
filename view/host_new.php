@@ -9,7 +9,7 @@ if (!isset($_POST['submit']))
             
             <span class="section-title">New Host</span>
             </div>    
-            <form action="<?=THIS_PAGE?>" method="POST">
+            <form action="new" method="POST">
                <div class="row">
                     <div class="small-12 medium-6 large-6 columns">
                         <label for="company_name">Customer Name
@@ -17,10 +17,10 @@ if (!isset($_POST['submit']))
                                 <option value=""></option>
                                 <?php
                                  
-                                $result = db_get('customers');
+                                $result = db_get('Users');
                                 for ($i=0;$i<count($result);$i++){
                                    echo '
-                                   <option value="'.$result[$i]['CustomerID'].'">'.$result[$i]['CustomerName'].'</option>
+                                   <option value="'.$result[$i]['Id'].'">'.$result[$i]['LastName'].' '.$result[$i]['FirstName'].'</option>
                                    '; 
                                 }
                                 ?>
@@ -49,17 +49,21 @@ if (!isset($_POST['submit']))
         
 <?php
 }else{//submit form
-    $domain = $_POST['domain'];
+   $domain = $_POST['domain'];
+   $data = array(
+       'Id'=> $_POST['clID']
+   );
+   $res = db_get_where('Users',$data);
+   shell_exec("sudo mkdir -p /home/".$res[0]['Username'].'/'.$domain.'/');
    $str_host = '<VirtualHost *:80> 
         ServerName www.'.$domain.'
         ServerAlias '.$domain.'
         ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/html/'.$domain.'/
+        DocumentRoot /home/'.$res[0]['Username'].'/'.$domain.'/
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
          </VirtualHost>
-        ErrorLog ${APACHE_LOG_DIR}/error.log
-        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        
         ';
         $result=""; 
 
@@ -75,7 +79,7 @@ if (!isset($_POST['submit']))
   ///Add the hosting information into databse
   $data = array('CustomerID' =>$_POST['clID'],
                 'Domain' =>$_POST['domain'],
-                'Qutoa' =>$_POST['quota'],
+                'Quota' =>$_POST['quota'],
                 'DateModify'=>date("Y-m-d") );
       db_insert('hosting',$data);
       $result .= $_POST['domain']." has beed hosted!";
@@ -85,7 +89,7 @@ if (!isset($_POST['submit']))
             
             <span class="section-title">'.$result.'</span>
    </div>
-   <a href="'.THIS_PAGE.'" class="flat-green button">Add more</a><a href="index.php" class="flat-green button">Home</a>
+    <a href="new" class="flat-green button">Add more</a><a href="'.VIRTUAL_PATH.'home" class="flat-green button">Home</a>
   ';
 
 }

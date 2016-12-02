@@ -9,14 +9,14 @@ include PHYSICAL_PATH.'library/admin.php';
             <span class="section-title">Customers</span>
             </div>
             <div class="small-12 columns">
-          <a href="customer_new.php" class="grey-color">
+          <a href="customer/new" class="grey-color">
             <div class="small-6 medium-3 columns small-item">
               <img src="<?=IMG_PATH?>newhosting.png" alt="Newhosting">
               <span>New</span>
             </div>
           </a>
           
-          <a href="customer_list.php" class="grey-color">
+          <a href="customer/list" class="grey-color">
             <div class="small-6 medium-3 columns small-item">
               <img src="<?=IMG_PATH?>listhosting.png" alt="listhosting">
               <span>List</span>
@@ -31,14 +31,14 @@ include PHYSICAL_PATH.'library/admin.php';
           <span class="section-title">Hosting</span>
         </div>
         <div class="small-12 columns">
-          <a href="host_new.php" class="grey-color">
+          <a href="host/new" class="grey-color">
             <div class="small-6 medium-3 columns small-item">
               <img src="<?=IMG_PATH?>newhosting.png" alt="Newhosting">
               <span>New</span>
             </div>
           </a>
 
-          <a href="host_list.php" class="grey-color">
+          <a href="host/list" class="grey-color">
             <div class="small-6 medium-3 columns small-item">
               <img src="<?=IMG_PATH?>listhosting.png" alt="listhosting">
               <span>List</span>
