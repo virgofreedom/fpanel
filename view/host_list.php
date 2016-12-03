@@ -18,7 +18,7 @@
                         for ($i=0;$i<count($result);$i++){
                             if($result[$i]['Status'] == 0){//Status == 0 is mean host is suspending
                                 $btn = '<a href="#" onclick="msgbox('.
-                         "'Are you sure to delete this customer?','host_activate.php?id=".$result[$i]['HostId']."','_self','yesno'"
+                         "'It will will activate this. Do you want to continue?','activate?id=".$result[$i]['HostId']."','_self','yesno'"
                          .')" class="flat-green button tiny">Activate</a>';
                             }else{//Status == 1 is mean host is activating
                                 $btn = '<a href="#" onclick="msgbox('.
@@ -32,7 +32,7 @@
                          <td>'.$btn.'
                          
                          <a href="#" onclick="msgbox('.
-                         "'Are you sure to delete this customer?','deleteid=".$result[$i]['HostId']."','_self','yesno'"
+                         "'Are you sure to delete this customer?','delete?id=".$result[$i]['HostId']."','_self','yesno'"
                          .')" class="flat-red button tiny">Delete</a>
                          </td>
                          </tr>

@@ -17,6 +17,7 @@ $now = date("Y-m-d H:i:s");
 ////make directory needed
 shell_exec("sudo mkdir config");
 shell_exec("sudo mkdir -p /home/fpanel/suspend");
+shell_exec("sudo mkdir -p /home/fpanel/suspend/img");
  /////Create file Credentials in config folder
     if(!file_exists("config/credentials.php")){
         $string = "<?php \r\n 
@@ -124,6 +125,7 @@ if(isset($_POST['submit'])){
     @mysqli_close($iConn);
     ///Copy some extras files
     shell_exec("sudo cp ".$physical."suspend/index.php /home/fpanel/suspend/index.php");
+    shell_exec("sudo cp ".$physical."img/suspended.png /home/fpanel/suspend/img/suspended.png");
 
 }
 echo '<div class="small-10 small-offset-1 columns">
