@@ -4,9 +4,20 @@
 
 if(isset($_GET['id'])){
         $id = $_GET['id'];
-        $result = db_get_where('hosting','HostID',$id);
+        $cond = array(
+          'HostId' => $id
+        );
+        $result = db_get_where('hosting',$cond);
         for ($i=0;$i<count($result);$i++){
             $domain = $result[$i]['Domain'];
+            $ClientId = $result[$i]['ClientId'];
+        }
+        $condUser = array(
+            'ClientId' => $ClientId
+        );
+        $res =  db_get_where('Users',$condUser);
+        for ($i=0;$i<count($res);$i++){
+            $Username = $res[$i]['Username'];
         }
 ///disable hosting
 shell_exec("sudo chmod 777 /etc/apache2/sites-available");
@@ -15,9 +26,11 @@ echo '<br>';
 echo shell_exec("sudo service apache2 reload");
 echo '<br>';
 echo shell_exec("sudo rm -f /etc/apache2/sites-available/".$domain.".conf");
-echo '<br>Done!';
+echo shell_exec("sudo rm -fR /home/".$Username."/".$domain);
 shell_exec("sudo chmod 755 /etc/apache2/sites-available");
-        db_delete('hosting','HostID',$id);
+echo '<br>Done!';
+
+        db_delete('hosting',$cond);
         $result = "The data has beed deleted!";
     echo '
     <div class="row">
@@ -25,7 +38,7 @@ shell_exec("sudo chmod 755 /etc/apache2/sites-available");
                 
                 <span class="section-title">'.$result.'</span>
     </div>
-    <a href="host_list.php" class="flat-green button">Back to list</a><a href="index.php" class="flat-green button">Home</a>
+    <a href="list" class="flat-green button">Back to list</a><a href="home" class="flat-green button">Home</a>
     </div>
     ';        
     }else{

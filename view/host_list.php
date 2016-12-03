@@ -32,7 +32,7 @@
                          <td>'.$btn.'
                          
                          <a href="#" onclick="msgbox('.
-                         "'Are you sure to delete this customer?','delete?id=".$result[$i]['HostId']."','_self','yesno'"
+                         "'It will also delete all the files and the contains. Are you sure to delete this hosting?','delete?id=".$result[$i]['HostId']."','_self','yesno'"
                          .')" class="flat-red button tiny">Delete</a>
                          </td>
                          </tr>
