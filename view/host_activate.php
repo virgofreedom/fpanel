@@ -17,7 +17,7 @@ if(isset($_GET['id'])){
         );
         $res =  db_get_where('hosting',$condUser);
         for ($i=0;$i<count($res);$i++){
-            $Username = $result[$i]['Username'];
+            $Username = $res[$i]['Username'];
         }
 ///disable hosting
  $str_host = '<VirtualHost *:80> 
