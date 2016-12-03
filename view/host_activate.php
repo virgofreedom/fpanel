@@ -15,7 +15,7 @@ if(isset($_GET['id'])){
         $condUser = array(
             'ClientId' => $ClientId
         );
-        $res =  db_get_where('hosting',$condUser);
+        $res =  db_get_where('Users',$condUser);
         for ($i=0;$i<count($res);$i++){
             $Username = $res[$i]['Username'];
         }
@@ -49,7 +49,7 @@ $data = array(
                 
                 <span class="section-title">'.$result.'</span>
     </div>
-        <a href="list" class="flat-green button">Add more</a><a href="'.VIRTUAL_PATH.'home" class="flat-green button">Home</a>
+        <a href="list" class="flat-green button">Back to list</a><a href="'.VIRTUAL_PATH.'home" class="flat-green button">Home</a>
     </div>
     ';        
     }else{

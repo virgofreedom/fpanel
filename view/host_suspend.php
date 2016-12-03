@@ -41,7 +41,7 @@ $data = array(
                 
                 <span class="section-title">'.$result.'</span>
     </div>
-        <a href="list" class="flat-green button">Add more</a><a href="'.VIRTUAL_PATH.'home" class="flat-green button">Home</a>
+        <a href="list" class="flat-green button">Back to list</a><a href="'.VIRTUAL_PATH.'home" class="flat-green button">Home</a>
     </div>
     ';        
     }else{
