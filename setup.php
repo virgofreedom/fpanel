@@ -14,8 +14,9 @@ $password = pass_encrypt($_POST['password'],$secret);
 $http_host = $_POST['http_host'];
 $physical =  $_POST['physical_path'];
 $now = date("Y-m-d H:i:s");
-
+////make directory needed
 shell_exec("sudo mkdir config");
+shell_exec("sudo mkdir -p /home/fpanel/suspend");
  /////Create file Credentials in config folder
     if(!file_exists("config/credentials.php")){
         $string = "<?php \r\n 
