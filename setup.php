@@ -123,7 +123,7 @@ if(isset($_POST['submit'])){
     }
     @mysqli_close($iConn);
     ///Copy some extras files
-    shell_exec("sudo cp -R ".$physical." suspend/index.php /home/fpanel/suspend/index.php");
+    shell_exec("sudo cp ".$physical." suspend/index.php /home/fpanel/suspend/index.php");
 
 }
 echo '<div class="small-10 small-offset-1 columns">
