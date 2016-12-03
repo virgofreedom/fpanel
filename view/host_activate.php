@@ -19,6 +19,7 @@ if(isset($_GET['id'])){
         for ($i=0;$i<count($res);$i++){
             $Username = $res[$i]['Username'];
         }
+        
 ///disable hosting
  $str_host = '<VirtualHost *:80> 
         ServerName www.'.$domain.'
@@ -29,6 +30,8 @@ if(isset($_GET['id'])){
         CustomLog ${APACHE_LOG_DIR}/access.log combined
          </VirtualHost>      
         ';
+echo $str_host;
+        
 echo '<pre>';
 shell_exec("sudo chmod 777 /etc/apache2/sites-available");
 echo shell_exec("sudo rm -f /etc/apache2/sites-available/".$domain.".conf");
