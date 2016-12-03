@@ -22,7 +22,7 @@
                          .')" class="flat-green button tiny">Activate</a>';
                             }else{//Status == 1 is mean host is activating
                                 $btn = '<a href="#" onclick="msgbox('.
-                         "'Are you sure to suspend this domain?','host/suspend?id=".$result[$i]['HostId']."','_self','yesno'"
+                         "'Are you sure to suspend this domain?','suspend?id=".$result[$i]['HostId']."','_self','yesno'"
                          .')" class="flat-red button tiny">Suspend</a>';
                             }
                          echo '
@@ -32,7 +32,7 @@
                          <td>'.$btn.'
                          
                          <a href="#" onclick="msgbox('.
-                         "'Are you sure to delete this customer?','host_delete.php?id=".$result[$i]['HostId']."','_self','yesno'"
+                         "'Are you sure to delete this customer?','deleteid=".$result[$i]['HostId']."','_self','yesno'"
                          .')" class="flat-red button tiny">Delete</a>
                          </td>
                          </tr>

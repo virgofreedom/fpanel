@@ -101,7 +101,7 @@ if(isset($_POST['submit'])){
     mysqli_query($iConn,$query) or die(mysqli_error($iConn));
     ///Create table hosting
     $query = "CREATE TABLE IF NOT EXISTS `hosting`(
-        Id int AUTO_INCREMENT PRIMARY KEY,
+        HostId int AUTO_INCREMENT PRIMARY KEY,
         ClientID int DEFAULT NULL,
         Domain text DEFAULT NULL,
         Quota decimal(10,0) DEFAULT NULL,

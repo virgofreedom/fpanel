@@ -79,6 +79,7 @@ if (!isset($_POST['submit']))
   $data = array('ClientId' =>$_POST['clID'],
                 'Domain' =>$_POST['domain'],
                 'Quota' =>$_POST['quota'],
+                'Status' => '1',
                 'DateModify'=>date("Y-m-d H:i:s") );
       db_insert('hosting',$data);
       $result .= $_POST['domain']." has beed hosted!";
