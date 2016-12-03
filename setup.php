@@ -9,6 +9,7 @@ $last = $_POST['lastname'];
 $first = $_POST['firstname'];
 $secret =   $_POST['secret_key'];
 $email  = $_POST['email'];
+$rootpass = pass_encrypt($_POST['pass'],$secret);
 $password = pass_encrypt($_POST['password'],$secret);
 $http_host = $_POST['http_host'];
 $physical =  $_POST['physical_path'];
@@ -67,9 +68,26 @@ if(isset($_POST['submit'])){
     mysqli_query($iConn,$query) or die(mysqli_error($iConn));
     ///Select database
     mysqli_select_db($iConn,'fpanel');
-    ///Create table
+    ///Create table Backup
+    $query = "CREATE TABLE IF NOT EXISTS `Backup`(
+        Id int AUTO_INCREMENT PRIMARY KEY,
+        Name text DEFAULT NULL,
+        Detail text DEFAULT NULL    
+    )";
+    mysqli_query($iConn,$query) or die(mysqli_error($iConn));
+    ///Add data to Backup table
+    $query = "INSERT INTO `Backup` (`Name`,`Detail`) VALUES
+    ('root_user','$user'),
+    ('root_pass','$rootpass'),
+    ('virtual_path','$http_host'),
+    ('physical_path','$physical'),
+    ('secret_key','$secret')
+    ";
+    mysqli_query($iConn,$query) or die(mysqli_error($iConn));
+    ///Create table Users
     $query = "CREATE TABLE IF NOT EXISTS `Users`(
     Id int AUTO_INCREMENT PRIMARY KEY,
+    Username text DEFAULT NULL,
     LastName varchar(255) DEFAULT NULL,
     FirstName varchar(255) DEFAULT NULL,
     CompanyName text DEFAULT NULL,
@@ -78,6 +96,15 @@ if(isset($_POST['submit'])){
     Password text DEFAULT NULL,
     ROLE text DEFAULT NULL,
     DateCreate datetime DEFAULT NULL
+    )";
+    mysqli_query($iConn,$query) or die(mysqli_error($iConn));
+    ///Create table hosting
+    $query = "CREATE TABLE IF NOT EXISTS `hosting`(
+        Id int AUTO_INCREMENT PRIMARY KEY,
+        CustomerID int DEFAULT NULL,
+        Domain text DEFAULT NULL,
+        Quota decimal(10,0) DEFAULT NULL,
+        DateModify datetime DEFAULT NULL
     )";
     mysqli_query($iConn,$query) or die(mysqli_error($iConn));
     ///Add Grant user with database

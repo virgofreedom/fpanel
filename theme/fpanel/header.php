@@ -1,6 +1,7 @@
 <?php
 if(SESSION == true){
     session_start();//session start
+    
 }
 ?>
 <!doctype html>
