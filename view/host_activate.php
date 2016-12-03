@@ -10,13 +10,21 @@ if(isset($_GET['id'])){
         $result = db_get_where('hosting',$cond);
         for ($i=0;$i<count($result);$i++){
             $domain = $result[$i]['Domain'];
+            $ClientId = $result[$i]['ClientId'];
+        }
+        $condUser = array(
+            'ClientId' => $ClientId
+        );
+        $res =  db_get_where('hosting',$condUser);
+        for ($i=0;$i<count($res);$i++){
+            $Username = $result[$i]['Username'];
         }
 ///disable hosting
  $str_host = '<VirtualHost *:80> 
         ServerName www.'.$domain.'
         ServerAlias '.$domain.'
         ServerAdmin webmaster@localhost
-        DocumentRoot /home/'.$result[0]['Username'].'/'.$domain.'/
+        DocumentRoot /home/'.$Username.'/'.$domain.'/
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
          </VirtualHost>      
