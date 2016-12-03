@@ -9,6 +9,7 @@ $last = $_POST['lastname'];
 $first = $_POST['firstname'];
 $secret =   $_POST['secret_key'];
 $email  = $_POST['email'];
+$username = $_POST['username'];
 $rootpass = pass_encrypt($_POST['pass'],$secret);
 $password = pass_encrypt($_POST['password'],$secret);
 $http_host = $_POST['http_host'];
@@ -118,8 +119,8 @@ if(isset($_POST['submit'])){
     $res = mysqli_query($iConn,$query);
     if (mysqli_num_rows($res) == 0){
         ///create user hosterd
-        $query = "INSERT INTO Users(`LastName`,`FirstName`,`Email`,`Password`,`ROLE`,`DateCreate`)
-        VALUES ('$last','$first','$email','$password','hoster','$now')";
+        $query = "INSERT INTO Users(`Username`,`LastName`,`FirstName`,`Email`,`Password`,`ROLE`,`DateCreate`)
+        VALUES ('$username','$last','$first','$email','$password','hoster','$now')";
         mysqli_query($iConn,$query) or die(mysqli_error($iConn));
     }
     @mysqli_close($iConn);

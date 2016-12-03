@@ -39,6 +39,10 @@ if(file_exists("config/credentials.php")){
                 <input type="text" placeholder="First Name" name="firstname" required>
              </div>
              <div class="small-12 medium-6 large-4 columns">
+                <label for="">Username*:</label>
+                <input type="text" placeholder="First Name" name="username" required>
+             </div>
+             <div class="small-12 medium-6 large-4 columns">
                 <label for="">Email*:</label>
                 <input type="Email" placeholder="Email" name="email" required>
              </div>
