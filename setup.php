@@ -86,7 +86,7 @@ if(isset($_POST['submit'])){
     mysqli_query($iConn,$query) or die(mysqli_error($iConn));
     ///Create table Users
     $query = "CREATE TABLE IF NOT EXISTS `Users`(
-    Id int AUTO_INCREMENT PRIMARY KEY,
+    ClientId int AUTO_INCREMENT PRIMARY KEY,
     Username text DEFAULT NULL,
     LastName varchar(255) DEFAULT NULL,
     FirstName varchar(255) DEFAULT NULL,
@@ -101,9 +101,10 @@ if(isset($_POST['submit'])){
     ///Create table hosting
     $query = "CREATE TABLE IF NOT EXISTS `hosting`(
         Id int AUTO_INCREMENT PRIMARY KEY,
-        CustomerID int DEFAULT NULL,
+        ClientID int DEFAULT NULL,
         Domain text DEFAULT NULL,
         Quota decimal(10,0) DEFAULT NULL,
+        Status int DEFAULT NULL,
         DateModify datetime DEFAULT NULL
     )";
     mysqli_query($iConn,$query) or die(mysqli_error($iConn));
@@ -119,13 +120,13 @@ if(isset($_POST['submit'])){
         VALUES ('$last','$first','$email','$password','hoster','$now')";
         mysqli_query($iConn,$query) or die(mysqli_error($iConn));
     }
-    
-    
     @mysqli_close($iConn);
+    ///Copy some extras files
+    shell_exec("sudo cp -R ".$physical." suspend/index.php /home/fpanel/suspend/index.php");
 
 }
 echo '<div class="small-10 small-offset-1 columns">
 <h1>Setup Completed</h1>
 </div>';
-header('Location: index.php');
+header('Location: home');
 include 'includes/footer.php';

@@ -20,7 +20,7 @@ if (!isset($_POST['submit']))
                                 $result = db_get('Users');
                                 for ($i=0;$i<count($result);$i++){
                                    echo '
-                                   <option value="'.$result[$i]['Id'].'">'.$result[$i]['LastName'].' '.$result[$i]['FirstName'].'</option>
+                                   <option value="'.$result[$i]['ClientId'].'">'.$result[$i]['LastName'].' '.$result[$i]['FirstName'].'</option>
                                    '; 
                                 }
                                 ?>
@@ -51,7 +51,7 @@ if (!isset($_POST['submit']))
 }else{//submit form
    $domain = $_POST['domain'];
    $data = array(
-       'Id'=> $_POST['clID']
+       'ClientId'=> $_POST['clID']
    );
    $res = db_get_where('Users',$data);
    shell_exec("sudo mkdir -p /home/".$res[0]['Username'].'/'.$domain.'/');
@@ -62,8 +62,7 @@ if (!isset($_POST['submit']))
         DocumentRoot /home/'.$res[0]['Username'].'/'.$domain.'/
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
-         </VirtualHost>
-        
+         </VirtualHost>      
         ';
         $result=""; 
 
@@ -77,10 +76,10 @@ if (!isset($_POST['submit']))
   shell_exec("sudo chmod 755 /etc/apache2/sites-available");
   //inital the hosting setup
   ///Add the hosting information into databse
-  $data = array('CustomerID' =>$_POST['clID'],
+  $data = array('ClientId' =>$_POST['clID'],
                 'Domain' =>$_POST['domain'],
                 'Quota' =>$_POST['quota'],
-                'DateModify'=>date("Y-m-d") );
+                'DateModify'=>date("Y-m-d H:i:s") );
       db_insert('hosting',$data);
       $result .= $_POST['domain']." has beed hosted!";
   
