@@ -103,7 +103,7 @@ if(isset($_POST['submit'])){
     ///Create table hosting
     $query = "CREATE TABLE IF NOT EXISTS `hosting`(
         HostId int AUTO_INCREMENT PRIMARY KEY,
-        ClientID int DEFAULT NULL,
+        ClientId int DEFAULT NULL,
         Domain text DEFAULT NULL,
         Quota decimal(10,0) DEFAULT NULL,
         Status int DEFAULT NULL,

@@ -30,7 +30,7 @@ if(isset($_GET['id'])){
         CustomLog ${APACHE_LOG_DIR}/access.log combined
          </VirtualHost>      
         ';
-echo $str_host;
+
         
 echo '<pre>';
 shell_exec("sudo chmod 777 /etc/apache2/sites-available");
