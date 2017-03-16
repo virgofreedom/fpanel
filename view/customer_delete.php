@@ -3,7 +3,7 @@
 <?php
 if(isset($_GET['id'])){
     $data_arr = array(
-        'Id'=>$_GET['id']
+        'ClientId'=>$_GET['id']
     );
         $res = db_get_where('Users',$data_arr);
         echo '<pre>';
