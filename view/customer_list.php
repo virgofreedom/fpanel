@@ -21,12 +21,12 @@
                             
                             echo '
                                 <tr>
-                                <td>'.$result[$i]['Id'].'</td><td>'.$result[$i]['CompanyName'].'</td><td>'.$result[$i]['LastName'].' '.$result[$i]['FirstName'].'</td>
+                                <td>'.$result[$i]['ClientId'].'</td><td>'.$result[$i]['CompanyName'].'</td><td>'.$result[$i]['LastName'].' '.$result[$i]['FirstName'].'</td>
                                 <td>'.$result[$i]['Phone'].'</td><td>'.$result[$i]['Email'].'</td><td>'.$result[$i]['DateCreate'].'</td>
                                 <td>
-                                <a href="edit?id='.$result[$i]['Id'].'" class="flat-green button tiny">Edit</a>
+                                <a href="edit?id='.$result[$i]['ClientId'].'" class="flat-green button tiny">Edit</a>
                                 <a href="#" onclick="msgbox('.
-                                "'Are you sure to delete this customer?','delete?id=".$result[$i]['Id']."','_self','yesno'"
+                                "'Are you sure to delete this customer?','delete?id=".$result[$i]['ClientId']."','_self','yesno'"
                                 .')" class="flat-red button tiny">Delete</a>
                                 </td>
                                 </tr>

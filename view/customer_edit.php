@@ -10,7 +10,7 @@ if(isset($_GET['id'])){
 if (!isset($_POST['submit']))
 {//show form
     $data = array(
-        'Id'=>$id
+        'ClientId'=>$id
     );
     $result = db_get_where('Users',$data);
          for ($i=0;$i<count($result);$i++){
@@ -64,7 +64,7 @@ if (!isset($_POST['submit']))
 <?php
 }else{//submit form
   $cond = array(
-      'Id'=>$_POST['id']
+      'ClientId'=>$_POST['id']
   );
 
   $data = array(

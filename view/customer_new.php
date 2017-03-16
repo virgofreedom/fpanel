@@ -90,15 +90,18 @@ if (!isset($_POST['submit']))
       'DateCreate'=>date("Y-m-d H:i:s") 
       );
   $res = db_get('Users','Where email="'.$_POST['email'].'"');
-  if($res[0]['Email'] != ""){
+  if (count($res > 0)){
+      if($res[0]['Email'] != ""){
       $result = $_POST['email'] . " has been already assign to an account. Please enter another email!.";
-  }else{
-      db_insert('Users',$data);
-      $result = $_POST['com_name']." has beed saved!";
-        echo '<pre>';
-        echo shell_exec ('sudo echo -e "'.$_POST['password'].'\n'.$_POST['password'].'\n\n\n\n\n\nY\n" | sudo adduser '.$_POST['username']);
-        echo '</pre>';
+      }else{
+          db_insert('Users',$data);
+          $result = $_POST['com_name']." has beed saved!";
+            echo '<pre>';
+            echo shell_exec ('sudo echo -e "'.$_POST['password'].'\n'.$_POST['password'].'\n\n\n\n\n\nY\n" | sudo adduser '.$_POST['username']);
+            echo '</pre>';
+      }  
   }
+  
       
   
   echo '
